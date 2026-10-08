@@ -6,9 +6,9 @@
 set -eu
 
 if [ "$(id -u)" = 0 ]; then
-    chown -R ccl:ccl /data
-    exec setpriv --reuid=ccl --regid=ccl --init-groups --inh-caps=-all \
-        -- /usr/local/bin/ccl-server "$@"
+  chown -R ccl:ccl /data
+  exec setpriv --reuid=ccl --regid=ccl --init-groups --inh-caps=-all \
+    -- /usr/local/bin/ccl-server "$@"
 fi
 
 exec /usr/local/bin/ccl-server "$@"
