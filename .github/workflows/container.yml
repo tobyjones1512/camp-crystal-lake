@@ -1,0 +1,31 @@
+name: Container
+
+on:
+  pull_request:
+    paths:
+      - Dockerfile
+      - .dockerignore
+      - scripts/container-entrypoint.sh
+      - src/**
+      - Cargo.toml
+      - Cargo.lock
+      - rust-toolchain.toml
+      - .github/workflows/container.yml
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  # Apple container runs linux/arm64 images, so build and smoke-test on arm64.
+  build:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Build image
+        run: docker build --tag ccl-server:ci .
+      - name: Smoke test
+        run: docker run --rm ccl-server:ci

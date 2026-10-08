@@ -34,6 +34,16 @@ powershell -c "irm https://github.com/CampCrystalLake/ccl-server/releases/latest
 # grab ccl-server-*.msi from the Releases page
 ```
 
+### macOS (Apple container)
+
+On Apple silicon Macs running macOS 26, run the server in a container with Apple's [`container`](https://github.com/apple/container) tool:
+
+```sh
+scripts/apple-container.sh start
+```
+
+See [docs/apple-container.md](docs/apple-container.md) for the full guide.
+
 ## Usage
 
 Full walkthrough (PS4/PS5 DNS setup, port forwarding, the works) lives on the wiki: <https://campcrystallake.xyz/guides/hosting/getting-started/>.
