@@ -17,14 +17,14 @@
 #   CCL_IMAGE   image tag            (default: ccl-server:latest)
 #   CCL_NAME    container name       (default: ccl-server)
 #   CCL_VOLUME  data volume name     (default: ccl-server-data)
-#   CCL_PORTS   TCP ports to publish (default: "80 443")
+#   CCL_PORTS   TCP ports to publish (default: the game backend ports)
 #   CCL_BIND    host address to bind (default: 0.0.0.0, i.e. the whole LAN)
 set -eu
 
 CCL_IMAGE=${CCL_IMAGE:-ccl-server:latest}
 CCL_NAME=${CCL_NAME:-ccl-server}
 CCL_VOLUME=${CCL_VOLUME:-ccl-server-data}
-CCL_PORTS=${CCL_PORTS:-80 443}
+CCL_PORTS=${CCL_PORTS:-9110 9120 9130 9140 9150 3030}
 CCL_BIND=${CCL_BIND:-0.0.0.0}
 
 REPO_ROOT=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)

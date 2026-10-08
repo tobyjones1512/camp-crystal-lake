@@ -37,6 +37,8 @@ COPY scripts/container-entrypoint.sh /usr/local/bin/container-entrypoint.sh
 
 WORKDIR /data
 VOLUME ["/data"]
-EXPOSE 80/tcp 443/tcp
+# Game backend ports, per the hosting guide.
+EXPOSE 9110/tcp 9120/tcp 9130/tcp 9140/tcp 9150/tcp 3030/tcp
 
 ENTRYPOINT ["/usr/local/bin/container-entrypoint.sh"]
+CMD ["--data-dir", "/data"]
